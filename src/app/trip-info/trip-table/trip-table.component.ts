@@ -31,4 +31,11 @@ export class TripTableComponent {
     })
   }
 
+  compareDates(date1: string, date2: string) {
+    if(date1 == null || date2 == null) {
+      return false
+    }
+    return (date1 < date2);
+  }
+
 }

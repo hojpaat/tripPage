@@ -19,10 +19,8 @@
                 <!-- adding scheduled time -->
                 <td class="time-table">
                     <p class="scheduled-time">{{ route.arrival.scheduled | date:'HH:mm' }}</p>
-                    <!-- when expected time available but actual arrival time is not, show expected time -->
-                    <p *ngIf="route.arrival.estimated && !route.arrival.actual " class="expected-time">Exp: {{ route.arrival.estimated | date:'HH:mm' }}</p>
-                    <!-- show actual arrival time when available -->
-                    <p *ngIf="route.arrival.actual" class="expected-time">Act: {{ route.arrival.actual | date:'HH:mm' }}</p>
+                    <!-- display expected time when it is bigger then scheduled time -->
+                    <p *ngIf="compareDates(route.arrival.scheduled, route.arrival.estimated)" class="expected-time">Exp: {{ route.arrival.estimated | date:'HH:mm' }}</p>
                   </td>
                   <td>
                     <!-- deciding if the bus has laft from the stop based on actual departur time -->
@@ -34,7 +32,8 @@
                     </ng-template>
                     <ng-template #waiting>
                         <!-- when actual departure time is not available show circle since bus has not reached the stop yet -->
-                        <i class="bi bi-circle"></i>
+                        <i *ngIf="!route.skipped" class="bi bi-circle"></i>
+                        <i *ngIf="route.skipped" class="bi bi-dash-circle"></i>
                     </ng-template>
                   </td>
                   <td class="stop-name">{{ route.location.name }}</td>

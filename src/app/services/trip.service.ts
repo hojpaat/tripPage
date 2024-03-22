@@ -22,12 +22,14 @@ export class TripService {
 
   getAllTrips() {
     // get curernt time and current end of day
-    let currentTime = new Date();
+    let startTime = new Date();
+    // set startTime 2h earlier then current time, so exp arrival time can be tested
+    startTime.setTime(startTime.getTime() + (-2*60*60*1000));
     let endOfDay = new Date();
     endOfDay.setUTCHours(23,59,59,999);
     // set up the queryParams
     let queryParams: HttpParams = new HttpParams()
-    queryParams = queryParams.set("departure_date_from", currentTime.toISOString());
+    queryParams = queryParams.set("departure_date_from", startTime.toISOString());
     queryParams = queryParams.set("departure_date_to", endOfDay.toISOString());
     queryParams = queryParams.set("departure_date_to", endOfDay.toISOString());
     queryParams = queryParams.set("origin", 13);
