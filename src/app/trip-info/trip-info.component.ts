@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { TripService } from '../services/trip.service';
-import { Route } from '@angular/router';
 import { TripInfo } from '../model/route/tripInfo';
+import { Vehicle } from '../model/vehicle/vehicle';
+import { Description } from '../model/route/description';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-trip-info',
@@ -13,6 +15,9 @@ export class TripInfoComponent {
   tripService: TripService = inject(TripService);
   tripId!: string | null;
   tripInfo: TripInfo | null = null;
+  currentRoutes: Route[] = [];
+  currentVehicle!: Vehicle | null;
+  currentDescription!: Description | null;
 
   ngOnInit() {
     this.tripService.getOneTripUid()
@@ -29,11 +34,15 @@ export class TripInfoComponent {
     this.tripService.getTripInfo(id)
     .subscribe({next: (tripInfo) => {
       this.tripInfo = tripInfo;
-      console.log("these are the trips");
-      
-      console.log(this.tripInfo);
+      this.processTripInfo(this.tripInfo);
     }})
     
+  }
+
+  processTripInfo(trip: TripInfo) {
+    this.currentDescription = trip.description;
+    this.currentRoutes = trip.route;
+    this.currentVehicle = trip.vehicle;
   }
 
 }
