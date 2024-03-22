@@ -4,6 +4,7 @@ import { TripInfo } from '../model/route/tripInfo';
 import { Vehicle } from '../model/vehicle/vehicle';
 import { Description } from '../model/route/description';
 import { RouteInfo } from '../model/route/routeInfo';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-trip-info',
@@ -18,18 +19,17 @@ export class TripInfoComponent {
   currentRoutes: RouteInfo[] = [];
   currentVehicle!: Vehicle | null;
   currentDescription!: Description | null;
-  test:string = "this works";
   isWheelchair: boolean = false;
   isBike: boolean = false;
   isWifi: boolean = false;
   isToilet: boolean = false;
   isCanceled: boolean = false;
+  errorMessage: string | null = null;
 
   ngOnInit() {
     this.tripService.getOneTripUid()
     .subscribe({next: (id) => {
       this.tripId = id;
-      console.log(this.tripId);
       this.getTripInfo(this.tripId);
       
     }});
@@ -40,8 +40,7 @@ export class TripInfoComponent {
     .subscribe({next: (tripInfo) => {
       this.tripInfo = tripInfo;
       this.processTripInfo(this.tripInfo);
-    }})
-    
+    }})    
   }
 
   processTripInfo(trip: TripInfo) {
@@ -53,8 +52,5 @@ export class TripInfoComponent {
     this.isWifi = this.currentVehicle.has_wifi;
     this.isToilet = this.currentVehicle.has_toilet;
     this.isCanceled = this.currentDescription.is_cancelled;
-
-    
   }
-
 }
