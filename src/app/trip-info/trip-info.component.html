@@ -1,4 +1,5 @@
 <div class="sb sb-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+<!-- infobox about the bus -->
 <div class="vehicle-info container grid">
     <div class="comfort">
         <span *ngIf="isWifi"><i class="bi bi-wifi"></i></span>
@@ -8,7 +9,7 @@
     </div>
     <div class="route-name">
         <span><i class="bi bi-bus-front-fill"></i></span>
-        <span>{{ currentDescription.route_number }}</span>
+        <span>{{ currentDescription.route_number || 'alternate text' }}</span>
         <span class="canceled" *ngIf="isCanceled">Canceled</span>
     </div>
 </div>

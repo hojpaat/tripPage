@@ -15,6 +15,7 @@ export class TripService {
   private QUOTES: string = "quotes/";
   private TRIPS: string = "trips/"
   errorMessage: string | null = null;
+  currentTripId: string = '';
 
 
   constructor() { }
@@ -35,10 +36,11 @@ export class TripService {
     return this.http.get<{[key: string]: Quote[]}>(this.BASE_URL + this.QUOTES, {params: queryParams});
   }
 
+  // retrieving one trip_uid
   getOneTripUid() {
     return this.getAllTrips()
     .pipe(map ((resp) => {
-      // getting the lalst quote trip_uid
+      // getting the first quote trip_uid
       let quotes: Quote[] = resp["quotes"];
       return quotes[0].legs[0].trip_uid;
     }),
@@ -48,6 +50,7 @@ export class TripService {
     }))
   }
 
+  // fetching trip info of given trip_uid
   getTripInfo(id: string) {
     return this.http.get<TripInfo>(this.BASE_URL + this.TRIPS + id);
   }

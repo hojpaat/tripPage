@@ -1,4 +1,5 @@
 <div class="container table-container table-responsive">
+    <!-- input for filtering the stop names -->
     <form class="d-flex" role="search">
         <input (change)="onValueChange($event)" name="searchText" class="form-control me-2" type="search" placeholder="Search stop name" aria-label="Search stop name" >
       </form>
@@ -14,21 +15,25 @@
           </tr>
         </thead>
         <tbody>
-          
             <tr *ngFor="let route of filteredRoutes" >
+                <!-- adding scheduled time -->
                 <td class="time-table">
                     <p class="scheduled-time">{{ route.arrival.scheduled | date:'HH:mm' }}</p>
+                    <!-- when expected time available but actual arrival time is not, show expected time -->
                     <p *ngIf="route.arrival.estimated && !route.arrival.actual " class="expected-time">Exp: {{ route.arrival.estimated | date:'HH:mm' }}</p>
+                    <!-- show actual arrival time when available -->
                     <p *ngIf="route.arrival.actual" class="expected-time">Act: {{ route.arrival.actual | date:'HH:mm' }}</p>
                   </td>
                   <td>
                     <!-- deciding if the bus has laft from the stop based on actual departur time -->
                     <span *ngIf="route.departure.actual; then left else waiting"></span>
                     <ng-template #left>
+                        <!-- when actual departure time is available display it with check sign -->
                         <i class="bi bi-check-circle"></i>
                         <span class="departure-time" >{{ route.departure.actual | date:'HH:mm' }}</span>
                     </ng-template>
                     <ng-template #waiting>
+                        <!-- when actual departure time is not available show circle since bus has not reached the stop yet -->
                         <i class="bi bi-circle"></i>
                     </ng-template>
                   </td>

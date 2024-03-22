@@ -16,10 +16,12 @@ export class TripTableComponent {
 
   }
 
+  // filtering the routes array by stop name when input provided
   onValueChange(event: any) {
     this.filteredRoutes = this.filterRoutesByStopName(event.target.value);
   }
 
+  // filtering the input array by name
   filterRoutesByStopName(filter: string): RouteInfo[] {
     if(this.currentRoutes.length == 0 || filter == '') {
       return this.currentRoutes;

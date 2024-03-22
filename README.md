@@ -1,3 +1,12 @@
+#Information for running
+
+This is an Angular 17 project, using bootstrap and bootstrap icons.
+For installing bootstrap:
+'npm i bootstrap@5.3.3
+
+For installing bootstrap icon:
+npm i bootstrap-icons
+
 # TripPage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.

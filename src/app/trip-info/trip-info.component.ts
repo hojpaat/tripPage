@@ -12,7 +12,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './trip-info.component.css'
 })
 export class TripInfoComponent {
-
   tripService: TripService = inject(TripService);
   tripId!: string | null;
   tripInfo: TripInfo | null = null;
@@ -27,12 +26,23 @@ export class TripInfoComponent {
   errorMessage: string | null = null;
 
   ngOnInit() {
+    this.getTripData();
+  }
+
+  getTripData() {
     this.tripService.getOneTripUid()
     .subscribe({next: (id) => {
       this.tripId = id;
       this.getTripInfo(this.tripId);
       
-    }});
+    },
+    error: (err: HttpErrorResponse) => {
+      this.errorMessage = err.error;
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000)
+    }
+  });
   }
 
   getTripInfo(id: string) {
