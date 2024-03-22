@@ -19,6 +19,10 @@ export class TripInfoComponent {
   currentVehicle!: Vehicle | null;
   currentDescription!: Description | null;
   test:string = "this works";
+  isWheelchair: boolean = false;
+  isBike: boolean = false;
+  isWifi: boolean = false;
+  isToilet: boolean = false;
 
   ngOnInit() {
     this.tripService.getOneTripUid()
@@ -43,7 +47,11 @@ export class TripInfoComponent {
     this.currentDescription = trip.description;
     this.currentRoutes = trip.route;
     this.currentVehicle = trip.vehicle;
-    console.log(this.currentRoutes);
+    this.isBike = this.currentVehicle.bicycle > 0;
+    this.isWheelchair = this.currentVehicle.wheelchair > 0;
+    this.isBike = this.currentVehicle.has_wifi;
+    this.isToilet = this.currentVehicle.has_toilet;
+
     
   }
 

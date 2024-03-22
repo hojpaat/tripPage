@@ -1,8 +1,14 @@
 <div class="vehicle-info">
-    
-    <span *ngIf="true"><i class="bi bi-person-wheelchair"></i></span>
-    <span *ngIf="true"><i class="bi bi-wifi"></i></span>
-    <span *ngIf="true"><i class="bi bi-bicycle"></i></span>
+    <div class="comfort">
+        <span *ngIf="isWifi"><i class="bi bi-wifi"></i></span>
+        <span *ngIf="isWheelchair"><i class="bi bi-person-wheelchair"></i></span>
+        <span *ngIf="isBike"><i class="bi bi-bicycle"></i></span>
+        <span *ngIf="isToilet"><i class="bi bi-badge-wc"></i></span>
+    </div>
+    <div class="route-name">
+        <span>{{ currentDescription.route_number }}</span>
+        <span>Canceled</span>
+    </div>
 </div>
 <div class="grid">
     <app-trip-table
