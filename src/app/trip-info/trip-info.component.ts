@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TripService } from '../services/trip.service';
 
 @Component({
   selector: 'app-trip-info',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './trip-info.component.css'
 })
 export class TripInfoComponent {
+
+  tripService: TripService = inject(TripService);
+
+  ngOnInit() {
+    this.tripService.getAllTrips()
+  }
 
 }
