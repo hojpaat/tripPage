@@ -9,9 +9,14 @@ import { TripService } from '../services/trip.service';
 export class TripInfoComponent {
 
   tripService: TripService = inject(TripService);
+  tripId!: string | null;
 
   ngOnInit() {
     this.tripService.getAllTrips()
+    this.tripService.getOneTripUid()
+    .subscribe({next: (id) => {
+      this.tripId = id;
+    }});
   }
 
 }
