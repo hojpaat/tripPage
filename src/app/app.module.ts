@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TripInfoComponent } from './trip-info/trip-info.component';
+import { TripMapComponent } from './trip-info/trip-map/trip-map.component';
+import { TripTableComponent } from './trip-info/trip-table/trip-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    TripInfoComponent
+    TripInfoComponent,
+    TripMapComponent,
+    TripTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-around;
+}
+
+.container {
+    border: 3px solid var(--mid-base-colour);
+    border-radius: 25px;
+}
