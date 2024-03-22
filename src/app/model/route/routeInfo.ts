@@ -1,6 +1,7 @@
+import { Location } from "./location"
 import { ScheduleTime } from "./scheduleTime"
 
-export interface Route {
+export interface RouteInfo {
     id: number
     departure: ScheduleTime
     arrival: ScheduleTime

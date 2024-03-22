@@ -1,0 +1,85 @@
+table {
+    table-layout: auto;
+}
+
+td {
+    vertical-align: middle;
+    justify-content: center;
+    text-align: center;
+  }
+
+th{
+    text-align: center;
+}
+
+.container {
+    border: 3px solid var(--mid-base-colour);
+    border-radius: 25px;
+}
+
+.table-container{
+    height: 500px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-base-colour) var(--light-base-colour);
+    
+    box-shadow: 5px 5px 3px var(--mid-base-colour);
+}
+
+.time-table{
+    display: flex;
+    flex-direction: column;
+}
+
+.time-table p {
+    margin: 0px;
+    text-align: center;
+}
+
+.scheduled-time {
+    font-weight: bold;
+}
+
+.expected-time {
+    font-weight: bolder;
+    color: red;
+}
+
+.form-control{
+    border: 3px solid var(--light-base-colour);
+    outline: none;
+}
+
+.form-control:focus{
+    border: 3px solid var(--dark-base-colour);
+    outline: none;
+}
+
+.departure-time{
+    font-style: italic;
+}
+
+.sb {
+    min-width: 350px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    border-radius: 5px;
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    top: 40px; /* 30px from the bottom */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  .sb-error{
+    background-color: #E74C3C; /* Black background color */
+    color: #fff; /* White text color */
+  }
+
+.stop-name{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}

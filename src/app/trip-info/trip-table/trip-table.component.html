@@ -1,1 +1,40 @@
-<p>trip-table works!</p>
+<div class="container table-container table-responsive">
+    <!-- <div class="sb sb-error" *ngIf="errorMessage">{{ errorMessage }}</div> -->
+    <!-- <form class="d-flex" role="search">
+        <input [value]="filterText" (change)="onValueChange($event)" name="searchText" class="form-control me-2" type="search" placeholder="Search stop name" aria-label="Search stop name" >
+      </form> -->
+   
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">
+                <i class="bi bi-clock-history"></i>
+            </th>
+            <th scope="col"></th>
+            <th scope="col stop-name"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr *ngFor="let route of currentRoutes" >
+                <td class="time-table">
+                    <p class="scheduled-time">{{ route.arrival.scheduled | date:'HH:mm' }}</p>
+                    <p *ngIf="route.arrival.estimated && !route.arrival.actual " class="expected-time">Exp: {{ route.arrival.estimated | date:'HH:mm' }}</p>
+                    <p *ngIf="route.arrival.actual" class="expected-time">Act: {{ route.arrival.actual | date:'HH:mm' }}</p>
+                  </td>
+                  <td>
+                    <!-- deciding if the bus has laft from the stop based on actual departur time -->
+                    <span *ngIf="route.departure.actual; then left else waiting"></span>
+                    <ng-template #left>
+                        <i class="bi bi-check-circle"></i>
+                        <span class="departure-time" >{{ route.departure.actual | date:'HH:mm' }}</span>
+                    </ng-template>
+                    <ng-template #waiting>
+                        <i class="bi bi-circle"></i>
+                    </ng-template>
+                  </td>
+                  <td class="stop-name">{{ route.location.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

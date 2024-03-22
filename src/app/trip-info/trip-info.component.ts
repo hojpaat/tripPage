@@ -3,7 +3,7 @@ import { TripService } from '../services/trip.service';
 import { TripInfo } from '../model/route/tripInfo';
 import { Vehicle } from '../model/vehicle/vehicle';
 import { Description } from '../model/route/description';
-import { Route } from '@angular/router';
+import { RouteInfo } from '../model/route/routeInfo';
 
 @Component({
   selector: 'app-trip-info',
@@ -15,9 +15,10 @@ export class TripInfoComponent {
   tripService: TripService = inject(TripService);
   tripId!: string | null;
   tripInfo: TripInfo | null = null;
-  currentRoutes: Route[] = [];
+  currentRoutes: RouteInfo[] = [];
   currentVehicle!: Vehicle | null;
   currentDescription!: Description | null;
+  test:string = "this works";
 
   ngOnInit() {
     this.tripService.getOneTripUid()
@@ -28,7 +29,6 @@ export class TripInfoComponent {
       
     }});
   }
-
 
   getTripInfo(id: string) {
     this.tripService.getTripInfo(id)
@@ -43,6 +43,8 @@ export class TripInfoComponent {
     this.currentDescription = trip.description;
     this.currentRoutes = trip.route;
     this.currentVehicle = trip.vehicle;
+    console.log(this.currentRoutes);
+    
   }
 
 }

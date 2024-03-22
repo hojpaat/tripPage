@@ -1,4 +1,12 @@
+<div class="vehicle-info">
+    
+    <span *ngIf="true"><i class="bi bi-person-wheelchair"></i></span>
+    <span *ngIf="true"><i class="bi bi-wifi"></i></span>
+    <span *ngIf="true"><i class="bi bi-bicycle"></i></span>
+</div>
 <div class="grid">
-    <app-trip-table></app-trip-table>
-    <app-trip-map></app-trip-map>
+    <app-trip-table
+    [currentRoutes]="currentRoutes">
+</app-trip-table>
+<app-trip-map></app-trip-map>
 </div>
