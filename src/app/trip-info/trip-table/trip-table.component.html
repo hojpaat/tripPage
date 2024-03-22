@@ -1,8 +1,8 @@
 <div class="container table-container table-responsive">
     <!-- <div class="sb sb-error" *ngIf="errorMessage">{{ errorMessage }}</div> -->
-    <!-- <form class="d-flex" role="search">
-        <input [value]="filterText" (change)="onValueChange($event)" name="searchText" class="form-control me-2" type="search" placeholder="Search stop name" aria-label="Search stop name" >
-      </form> -->
+    <form class="d-flex" role="search">
+        <input (change)="onValueChange($event)" name="searchText" class="form-control me-2" type="search" placeholder="Search stop name" aria-label="Search stop name" >
+      </form>
    
     <table class="table table-striped">
         <thead>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           
-            <tr *ngFor="let route of currentRoutes" >
+            <tr *ngFor="let route of filteredRoutes" >
                 <td class="time-table">
                     <p class="scheduled-time">{{ route.arrival.scheduled | date:'HH:mm' }}</p>
                     <p *ngIf="route.arrival.estimated && !route.arrival.actual " class="expected-time">Exp: {{ route.arrival.estimated | date:'HH:mm' }}</p>

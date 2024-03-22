@@ -9,17 +9,24 @@ import { RouteInfo } from '../../model/route/routeInfo';
 export class TripTableComponent {
 
   @Input() currentRoutes: RouteInfo[] = [];
-  // filteredStops: Stop[] = [];
+  filteredRoutes: RouteInfo[] = [];
 
-
-  ngAfterViewInit() {
+  ngOnInit() {
+    this.filteredRoutes = this.filterRoutesByStopName('');
 
   }
 
   onValueChange(event: any) {
-    // this.filteredStops = this.filterStopsByName(event.target.value);
-    // console.log(this.filteredStops);
-    
+    this.filteredRoutes = this.filterRoutesByStopName(event.target.value);
+  }
+
+  filterRoutesByStopName(filter: string): RouteInfo[] {
+    if(this.currentRoutes.length == 0 || filter == '') {
+      return this.currentRoutes;
+    }
+    return this.currentRoutes.filter((route: RouteInfo) => {
+      return route.location.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase());
+    })
   }
 
 }
