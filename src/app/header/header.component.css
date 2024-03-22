@@ -1,0 +1,20 @@
+#navbarNavAltMarkup {
+    justify-content: right;
+}
+
+.nav-link {
+    color: var(--mid-base-colour)
+}
+
+.nav-link.active {
+    color: var(--dark-base-colour);
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.nav-link.disabled {
+    color: var(--light-base-colour);
+}
