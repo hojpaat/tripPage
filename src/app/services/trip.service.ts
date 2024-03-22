@@ -1,7 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Quote } from '../model/quote';
+import { Quote } from '../model/route/quote';
 import { catchError, map, throwError } from 'rxjs';
+import { Route } from '@angular/router';
+import { TripInfo } from '../model/route/tripInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ export class TripService {
   private http: HttpClient = inject(HttpClient);
   private BASE_URL: string = "https://api.ember.to/v1/";
   private QUOTES: string = "quotes/";
+  private TRIPS: string = "trips/"
   errorMessage: string | null = null;
 
 
@@ -37,11 +40,15 @@ export class TripService {
     .pipe(map ((resp) => {
       // getting the lalst quote trip_uid
       let quotes: Quote[] = resp["quotes"];
-      return quotes[quotes.length - 1].legs[0].trip_uid;
+      return quotes[0].legs[0].trip_uid;
     }),
     catchError((err) => {
       this.errorMessage = err.message;
       return throwError(() => err)
     }))
+  }
+
+  getTripInfo(id: string) {
+    return this.http.get<TripInfo>(this.BASE_URL + this.TRIPS + id);
   }
 }
