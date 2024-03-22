@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TripInfoComponent } from './trip-info/trip-info.component';
 import { TripMapComponent } from './trip-info/trip-map/trip-map.component';
 import { TripTableComponent } from './trip-info/trip-table/trip-table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TripTableComponent } from './trip-info/trip-table/trip-table.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
