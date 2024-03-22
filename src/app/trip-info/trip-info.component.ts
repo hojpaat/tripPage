@@ -23,6 +23,7 @@ export class TripInfoComponent {
   isBike: boolean = false;
   isWifi: boolean = false;
   isToilet: boolean = false;
+  isCanceled: boolean = false;
 
   ngOnInit() {
     this.tripService.getOneTripUid()
@@ -49,8 +50,9 @@ export class TripInfoComponent {
     this.currentVehicle = trip.vehicle;
     this.isBike = this.currentVehicle.bicycle > 0;
     this.isWheelchair = this.currentVehicle.wheelchair > 0;
-    this.isBike = this.currentVehicle.has_wifi;
+    this.isWifi = this.currentVehicle.has_wifi;
     this.isToilet = this.currentVehicle.has_toilet;
+    this.isCanceled = this.currentDescription.is_cancelled;
 
     
   }

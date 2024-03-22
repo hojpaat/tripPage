@@ -8,3 +8,29 @@
     border: 3px solid var(--mid-base-colour);
     border-radius: 25px;
 }
+
+.comfort{
+    padding: 15px;
+    font-size: 25px;
+}
+
+.comfort span {
+    padding: 5px;
+}
+
+.vehicle-info.grid{
+    grid-template-columns: 10% 80%;
+    align-items: center;
+}
+
+.route-name{
+    padding: 15px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.canceled{
+    padding-left: 15px;
+    color: rgb(187, 0, 0);
+}
+

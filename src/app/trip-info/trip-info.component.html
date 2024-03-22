@@ -1,4 +1,4 @@
-<div class="vehicle-info">
+<div class="vehicle-info container grid">
     <div class="comfort">
         <span *ngIf="isWifi"><i class="bi bi-wifi"></i></span>
         <span *ngIf="isWheelchair"><i class="bi bi-person-wheelchair"></i></span>
@@ -6,8 +6,9 @@
         <span *ngIf="isToilet"><i class="bi bi-badge-wc"></i></span>
     </div>
     <div class="route-name">
+        <span><i class="bi bi-bus-front-fill"></i></span>
         <span>{{ currentDescription.route_number }}</span>
-        <span>Canceled</span>
+        <span class="canceled" *ngIf="isCanceled">Canceled</span>
     </div>
 </div>
 <div class="grid">
